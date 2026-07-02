@@ -13,7 +13,7 @@ namespace GroupProgCmd.Services
     {
         public async Task RunA()
         {
-            const string preLog = "GroupProgCmd: ";
+            const string preLog = "Down5RpaSvc: ";
             _Log.Info(preLog + "Start.");
 
             //讀取HrInsGov待處理: RPA已上傳, 系統未下載, 狀態=1(正常)
