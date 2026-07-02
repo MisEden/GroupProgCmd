@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace GroupProgCmd.Services
 {
-    public class MyService
+    //下載5個RPA上傳的pdf檔案, 加上印章圖檔, 存到新目錄, 並更新HrInsGov.SysDown=1
+    public class Down5RpaSvc
     {
         public async Task RunA()
         {

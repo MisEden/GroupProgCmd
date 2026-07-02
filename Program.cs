@@ -41,7 +41,7 @@ namespace GroupProgCmd
             builder.Configuration.GetSection("MyConfig").Bind(myConfig);
             _Xp.Config = myConfig;
 
-            #region services
+            #region init 
             services.AddSingleton<IBaseUserSvc, BaseUserSvc>();
 
             //5.ado.net for mssql
@@ -66,8 +66,8 @@ namespace GroupProgCmd
                 _Xp.Config.DirHrInsGovPwd = _Str.DecodeByKey(_Xp.Config.DirHrInsGovPwd, key);
             }
 
-            //7.run main 
-            await new MyService().RunA();
+            //7.run service 
+            await new Down5RpaSvc().RunA();
         }
 
     }
