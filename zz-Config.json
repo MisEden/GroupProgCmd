@@ -1,0 +1,19 @@
+{
+  "MyConfig": {
+    "PdfKeyFile": "license.elic.xml",
+    "DirHrInsGov": "\\\\hcnas\\104nas\\94.RPA",
+    "DirHrInsGovUid": "boTlBCL91/1tieFWAxRQBQ==",
+    "DirHrInsGovPwd": "knj+n9QRU39wndVMocb8Aw=="
+  },
+
+  "FunConfig": {
+    "SystemName": "GroupProgCmd System",
+    "Db": "data source=.\\SqlExpress;initial catalog=Bao;integrated security=True;multipleactiveresultsets=True;max pool size=1000;",
+    "Locale": "zh-TW",
+    "LogSql": "true",
+    "LogDebug": "true",
+    /* Smtp: 0(Host),1(Port),2(Ssl),3(Id),4(Pwd),5(FromEmail),6(FromName) */
+    "Smtp": ""
+    //"Redis": "127.0.0.1:6379,defaultDatabase=0,allowAdmin=true"
+  }
+}
