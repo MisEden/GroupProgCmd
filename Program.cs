@@ -67,7 +67,8 @@ namespace GroupProgCmd
             }
 
             //7.run service 
-            await new Down5RpaSvc().RunA();
+            //await new Down5RpaSvc().RunA();
+            await new Down5RpaSvc2().RunA();
         }
 
     }

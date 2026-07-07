@@ -44,11 +44,12 @@ order by a.StartYear, a.StartMonth
             ];
 
             //connect hr folder
-            if (!_Xp.ConnectHrInsGov())
-            {
-                _Log.Error(preLog + "無法連線pdf來源目錄。");
-                return;
-            }
+            // 這部分可以不必測
+            //if (!_Xp.ConnectHrInsGov())
+            //{
+            //    _Log.Error(preLog + "無法連線pdf來源目錄。");
+            //    return;
+            //}
 
             //set pdf key
             var pdfSvc = new SpireSvc();
