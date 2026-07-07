@@ -5,12 +5,13 @@
     /// </summary>
     public class MyConfigDto
     {
-        public string PdfKeyFile { get; set; } = "";        
+        public string PdfKeyFile { get; set; } = "";
+        public string HrDirUid { get; set; } = "";
+        public string HrDirPwd { get; set; } = "";
         public string DirHrInsGovFrom { get; set; } = "";
         public string DirHrInsGovTo { get; set; } = "";
-        public string DirHrInsGovUid { get; set; } = "";
-
-        public string DirHrInsGovPwd { get; set; } = "";
+        public string DirHrAddInsFrom { get; set; } = "";
+        public string DirHrAddInsTo { get; set; } = "";
 
         /*
         //勞健退-加保 來源pdf檔案目錄(網路磁碟目錄)

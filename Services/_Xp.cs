@@ -21,6 +21,8 @@ namespace GroupProgCmd.Services
         //dir
         public static string DirTpl = _Fun.DirRoot + "_template/";
         //public static string DirUpload = _Fun.DirRoot + "_upload/";
+        public static string PathHrSmallStamp = DirTpl + "HrSmallStamp.png";
+        public static string PathHrBigStamp = DirTpl + "HrBigStamp.png";
 
         public static string DirBaseUpload = _Fun.Dir("_upload");
         //public static string DirHrInsGov = DirUpload("HrInsGov");
@@ -44,18 +46,18 @@ namespace GroupProgCmd.Services
                 ? "" : _Fun.DirRoot + Config.PdfKeyFile;
         }
 
-        public static void DisConnectHrInsGov()
+        public static void BreakHrDir()
         {
             //_Net.Disconnect(Config.DirHrInsGovFrom);
             _Net.Disconnect(@"\\192.168.127.123"); // 清掉所有 share
         }
 
         //連線加保目錄
-        public static bool ConnectHrInsGov()
+        public static bool ConnectHrDir()
         {
             //temp log error
-            //_Log.Error($"path={Config.DirHrInsGovFrom},uid={Config.DirHrInsGovUid},pwd={Config.DirHrInsGovPwd}");
-            DisConnectHrInsGov();
+            //_Log.Error($"path={Config.DirHrInsGovFrom},uid={Config.HrDirUid},pwd={Config.HrDirPwd}");
+            BreakHrDir();
             
             var psi = new ProcessStartInfo("cmd.exe", "/c net use")
             {
@@ -67,7 +69,7 @@ namespace GroupProgCmd.Services
             var output = proc.StandardOutput.ReadToEnd();
             Console.WriteLine(output);
 
-            return _Net.Connect(Config.DirHrInsGovFrom, Config.DirHrInsGovUid, Config.DirHrInsGovPwd);
+            return _Net.Connect(Config.DirHrInsGovFrom, Config.HrDirUid, Config.HrDirPwd);
         }
 
         private static string DirUpload(string subDir, bool sep = true)

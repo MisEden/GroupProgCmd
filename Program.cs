@@ -42,10 +42,8 @@ namespace GroupProgCmd
             _Xp.Config = myConfig;
 
             #region init 
-            services.AddSingleton<IBaseUserSvc, BaseUserSvc>();
-
-            //5.ado.net for mssql
-            services.AddTransient<DbConnection, SqlConnection>();
+            services.AddSingleton<IBaseUserSvc, BaseUserSvc>();            
+            services.AddTransient<DbConnection, SqlConnection>();   //ado.net for mssql
             services.AddTransient<DbCommand, SqlCommand>();
 
             //is development or not
@@ -62,13 +60,13 @@ namespace GroupProgCmd
             if (_Fun.Config.Encode)
             {
                 var key = _Str.GetKey();
-                _Xp.Config.DirHrInsGovUid = _Str.DecodeByKey(_Xp.Config.DirHrInsGovUid, key).Replace("\\\\", "\\");   //有domain
-                _Xp.Config.DirHrInsGovPwd = _Str.DecodeByKey(_Xp.Config.DirHrInsGovPwd, key);
+                _Xp.Config.HrDirUid = _Str.DecodeByKey(_Xp.Config.HrDirUid, key).Replace("\\\\", "\\");   //有domain
+                _Xp.Config.HrDirPwd = _Str.DecodeByKey(_Xp.Config.HrDirPwd, key);
             }
 
             //7.run service 
             //await new Down5RpaSvc().RunA();
-            await new Down5RpaSvc2().RunA();
+            await new DownAddInsSvc().RunA();
         }
 
     }

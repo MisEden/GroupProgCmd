@@ -39,17 +39,16 @@ order by a.StartYear, a.StartMonth
             //印章圖檔, PosX/Y在for loop裡面設定, 因為不同類型的pdf位置不一樣
             PdfImageDto[] markImagesW =
             [
-                new() { PosX = 0, PosY = 0, Width = 35, FilePath = _Xp.DirTpl + "HrAddInsSmall.png" },
-                new() { PosX = 0, PosY = 0, Width = 70, FilePath = _Xp.DirTpl + "HrAddInsBig.png" },
+                new() { PosX = 0, PosY = 0, Width = 35, FilePath = _Xp.PathHrSmallStamp },
+                new() { PosX = 0, PosY = 0, Width = 70, FilePath = _Xp.PathHrBigStamp },
             ];
 
             //connect hr folder
-            // 這部分可以不必測
-            //if (!_Xp.ConnectHrInsGov())
-            //{
-            //    _Log.Error(preLog + "無法連線pdf來源目錄。");
-            //    return;
-            //}
+            if (!_Xp.ConnectHrDir())
+            {
+                _Log.Error(preLog + "無法連線pdf來源目錄。");
+                return;
+            }
 
             //set pdf key
             var pdfSvc = new SpireSvc();
@@ -132,7 +131,7 @@ order by a.StartYear, a.StartMonth
             }
 
             //disconnect & log end
-            _Xp.DisConnectHrInsGov();
+            _Xp.BreakHrDir();
             _Log.Info(preLog + "End.");
         }
 
