@@ -1,5 +1,6 @@
 ﻿using Base.Models;
 using Base.Services;
+using GroupProgLib.Enums;
 using PdfSpire;
 using System;
 using System.Collections.Generic;
@@ -59,13 +60,22 @@ order by a.StartYear, a.StartMonth
             var dirTo = _Str.AddDirSep(_Xp.Config.DirHrInsGovTo);
             foreach (var row in rows)
             {
-                //todo: 如果是 type 1,2,3則沒有起迄年月, 一律讀取建檔年月(單筆) by HR !!
+                //如果是 type 1,2,3則沒有起迄年月, 一律讀取目前年月(單筆) by HR !!
                 var rowType = row["RowType"]!.ToString();
-
                 var startYear = Convert.ToInt32(row["StartYear"]);
                 var startMonth = Convert.ToInt32(row["StartMonth"]);
                 var endYear = Convert.ToInt32(row["EndYear"]);
                 var endMonth = Convert.ToInt32(row["EndMonth"]);
+                if (rowType == HrInsGovEstr.Work || 
+                    rowType == HrInsGovEstr.Health || 
+                    rowType == HrInsGovEstr.WorkChange)
+                {
+                    var today = DateTime.Today;
+                    startYear = today.Year;
+                    startMonth = today.Month;
+                    endYear = today.Year;
+                    endMonth = today.Month;
+                }
 
                 var start = new DateTime(startYear, startMonth, 1);
                 var end = new DateTime(endYear, endMonth, 1);
