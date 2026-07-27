@@ -53,8 +53,11 @@ namespace GroupProgCmd.Services
         }
 
         //連線加保目錄
-        public static bool ConnectHrDir()
+        public static bool ConnectHrDir(string dirFrom)
         {
+            //production 才要 connect !!
+            if (_Fun.IsDev) return true;
+
             //temp log error
             //_Log.Error($"path={Config.DirHrInsGovFrom},uid={Config.HrDirUid},pwd={Config.HrDirPwd}");
             BreakHrDir();
@@ -69,7 +72,7 @@ namespace GroupProgCmd.Services
             var output = proc.StandardOutput.ReadToEnd();
             Console.WriteLine(output);
 
-            return _Net.Connect(Config.DirHrInsGovFrom, Config.HrDirUid, Config.HrDirPwd);
+            return _Net.Connect(dirFrom, Config.HrDirUid, Config.HrDirPwd);
         }
 
         private static string DirUpload(string subDir, bool sep = true)

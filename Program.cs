@@ -65,6 +65,7 @@ namespace GroupProgCmd
             }
 
             //7.run service 
+            //todo: temp remark
             //await new Down5RpaSvc().RunA();
             await new DownAddInsSvc().RunA();
         }

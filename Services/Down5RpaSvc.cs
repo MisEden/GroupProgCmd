@@ -45,9 +45,10 @@ order by a.StartYear, a.StartMonth
             ];
 
             //connect hr folder
-            if (!_Xp.ConnectHrDir())
+            var dirFrom2 = _Xp.Config.DirHrInsGovFrom;
+            if (!_Xp.ConnectHrDir(dirFrom2))
             {
-                _Log.Error(preLog + "無法連線pdf來源目錄。");
+                _Log.Error(preLog + $"無法連線pdf來源目錄。({dirFrom2})");
                 return;
             }
 

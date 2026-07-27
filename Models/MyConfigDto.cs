@@ -8,10 +8,18 @@
         public string PdfKeyFile { get; set; } = "";
         public string HrDirUid { get; set; } = "";
         public string HrDirPwd { get; set; } = "";
+
+        //政府官網5個RPA
         public string DirHrInsGovFrom { get; set; } = "";
         public string DirHrInsGovTo { get; set; } = "";
+
+        //勞健保-加保
         public string DirHrAddInsFrom { get; set; } = "";
         public string DirHrAddInsTo { get; set; } = "";
+
+        //勞健保-加保
+        public string DirHrBackInsFrom { get; set; } = "";
+        public string DirHrBackInsTo { get; set; } = "";
 
         /*
         //勞健退-加保 來源pdf檔案目錄(網路磁碟目錄)
