@@ -71,6 +71,8 @@ where Created >= CAST(getDate() AS DATE)
                 return 0;
             }
 
+            //todo: dirFrom 加上民國年度(ex:115年), 月份(ex:11506)再讀檔案
+
             //取得檔案開頭為今天的檔案
             var dirFrom2 = new DirectoryInfo(dirFrom);
             var dateStr = _Date.ToTwDateStr(DateTime.Today, 3) + "-";
