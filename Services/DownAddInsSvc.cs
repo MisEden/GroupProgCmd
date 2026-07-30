@@ -61,7 +61,15 @@ where Created >= CAST(getDate() AS DATE)
             _Log.Info(preLog + "End.");
         }
 
-        //傳回: 處理檔案數
+        /// <summary>
+        /// 傳回: 處理檔案數
+        /// </summary>
+        /// <param name="dirFrom">右側有分隔線</param>
+        /// <param name="dirTo">右側有分隔線</param>
+        /// <param name="dbFiles"></param>
+        /// <param name="db"></param>
+        /// <param name="stamps"></param>
+        /// <returns></returns>
         private async Task<int> CopyFiles(string dirFrom, string dirTo, List<string> dbFiles, Db db, PdfImageDto[] stamps)
         {
             //connect hr folder
@@ -71,10 +79,17 @@ where Created >= CAST(getDate() AS DATE)
                 return 0;
             }
 
-            //todo: dirFrom 加上民國年度(ex:115年), 月份(ex:11506)再讀檔案
+            //dirFrom 加上民國年度(ex:115年), 月份(ex:11506)再讀檔案
+            var today = DateTime.Today;
+            var twYear = today.Year - 1911;
+            var month = today.ToString("MM");
+            dirFrom = $"{dirFrom}{twYear}年/{twYear}{month}/";
 
             //取得檔案開頭為今天的檔案
             var dirFrom2 = new DirectoryInfo(dirFrom);
+            if (!dirFrom2.Exists)
+                return 0;     //回傳0 ,不記錄error
+
             var dateStr = _Date.ToTwDateStr(DateTime.Today, 3) + "-";
             var todayFiles = dirFrom2.GetFiles()
                 .Where(f => f.Name.Contains(dateStr))
