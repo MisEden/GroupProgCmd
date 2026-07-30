@@ -3,12 +3,12 @@ using Base.Models;
 using Base.Services;
 using GroupProgCmd.Models;
 using GroupProgCmd.Services;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace GroupProgCmd
